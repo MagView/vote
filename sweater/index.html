@@ -23,7 +23,7 @@
             success: function(data) {
                 blobs = $.parseXML(data);
                 console.log(data);
-                console.log($.type(data));
+                var thedata = data;
                 listBlobs(blobs);
             }
         });
