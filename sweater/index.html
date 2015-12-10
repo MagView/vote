@@ -20,7 +20,6 @@
         $.ajax({
             type: 'GET',
             url: containerUrl + '?restype=container&comp=list',
-            dataType: 'xml',
             success: function(data) {
                 blobs = $.parseXML(data);
                 alert(data);
