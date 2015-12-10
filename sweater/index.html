@@ -22,7 +22,6 @@
             url: containerUrl + '?restype=container&comp=list',
             success: function(data) {
                 blobs = $.parseXML(data);
-                alert(data);
                 listBlobs(blobs);
             }
         });
