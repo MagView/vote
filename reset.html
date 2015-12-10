@@ -1,0 +1,44 @@
+<html>
+<head>
+    <title>MagView ShipIt</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/user.css">
+</head>
+<body>
+  <br/>
+  <div class="container">
+      <div class="row">
+          <div class="col-md-9">
+            <h2>Reset</h2>
+            <br/>
+            <button type="button" class="btn btn-primary" id="btnResetResults">Clear (reset) results</button>
+            <br/><br/>
+            <button type="button" class="btn btn-primary" id="btnDeleteProjects">Delete all teams (and clear results)</button>
+          </div>
+          <div class="col-md-3">
+            <ul class="nav nav-pills nav-stacked">
+                <li class="active"><a href='index.html'>Home</a></li>
+                <li><a href='projects.html'>Projects</a></li>
+                <li><a href='reset.html'>Reset Results</a></li>
+            </ul>
+          </div>
+      </div>
+  </div>
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  
+  <script>
+  $(document).ready(function () {
+    
+    $("#btnResetResults").click(function () {
+                $.ajax({
+                    url: "http://mvshipit.webscript.io/resetdata", success: function (result) {
+                        alert("Reset!");
+                    }
+                });
+            });
+    });
+   
+  </script>
+</body>
+</html>

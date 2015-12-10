@@ -1,0 +1,60 @@
+<html>
+<head>
+    <title>MagView ShipIt</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/user.css">
+</head>
+<body>
+  <br/>
+  <div class="container">
+      <div class="row">
+          <div class="col-md-9">
+            <h1><span class="label label-default">Text 443-569-7778 to vote!</span></h1>
+            <br/>
+            <table id="DataTable" class="table table-striped">
+                <tr>
+                    <th>Project</th>
+                    <th>Vote</th>
+                    <th>Score</th>
+                </tr>
+            </table>
+          </div>
+          <div class="col-md-3">
+            <ul class="nav nav-pills nav-stacked">
+                <li class="active"><a href='index.html'>Home</a></li>
+                <li><a href='projects.html'>Projects</a></li>
+                <li><a href='reset.html'>Reset Results</a></li>
+            </ul>
+          </div>
+      </div>
+  </div>
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  
+  <script>
+  $(document).ready(function () {
+    $.ajax({
+            url: 'http://mvshipit.webscript.io/results', success: function(data) {
+            response = $.parseJSON(data);
+            response = response.sort(function (a, b) { return a.number.localeCompare(b.number); });
+            drawTable(response);
+        }
+    });
+  });
+    
+    function drawTable(data) {
+        for (var i = 0; i < data.length; i++) {
+            drawRow(data[i]);
+        }
+    }
+    
+    function drawRow(rowData) {
+        var row = $("<tr />")
+        $("#DataTable").append(row); //this will append tr element to table... keep its reference for a while since we will add cels into it
+        row.append($("<td>" + rowData.project + "</td>"));
+        row.append($("<td><span class='info'>Text <span class='label label-info lead'>/shipvote " + rowData.number + "</span></span></td>"));
+        row.append($("<td>" + (($.type(rowData.result) === "undefined") ? "0" : rowData.result) + "</td>"));
+    }
+  </script>
+</body>
+</html>

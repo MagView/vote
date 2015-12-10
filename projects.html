@@ -1,0 +1,82 @@
+<html>
+<head>
+    <title>MagView ShipIt</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/user.css">
+</head>
+<body>
+  <br/>
+  <div class="container">
+      <div class="row">
+          <div class="col-md-9">
+            <h2>Projects</h2>
+            <br/>
+            <form class="form-inline" action="http://mvshipit.webscript.io/addproject" method="POST">
+             <div class="input-group"> 
+                <div class="input-group-addon">#</div> 
+                <input type="text" class="form-control" id="txtNum" placeholder="Number">
+            </div>
+            <div class="input-group"> 
+                <div class="input-group-addon">Name</div> 
+                <input type="text" class="form-control" id="txtName" placeholder="Project Name">
+            </div>
+            <button type="button" id="btnSubmit" class="btn btn-default">Add</button>
+            </form>
+            <br/>
+            <table id="DataTable" class="table table-striped">
+                <tr>
+                    <th>#</th>
+                    <th>Project</th>
+                </tr>
+            </table>
+          </div>
+          <div class="col-md-3">
+            <ul class="nav nav-pills nav-stacked">
+                <li class="active"><a href='index.html'>Home</a></li>
+                <li><a href='projects.html'>Projects</a></li>
+                <li><a href='reset.html'>Reset Results</a></li>
+            </ul>
+          </div>
+      </div>
+  </div>
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+  
+  <script>
+  $(document).ready(function () {
+    drawData();
+    
+    $("#btnSubmit").click(function () {
+                $.ajax({
+                    url: "http://mvshipit.webscript.io/addproject?num=" + $("#txtNum").val() + "&name=" + $("#txtName").val(), success: function (result) {
+                        $("#DataTable").find("tr:gt(0)").remove();
+                        drawData();
+                    }
+                });
+            });
+    });
+    
+    function drawData() {
+        $.ajax({
+            url: 'http://mvshipit.webscript.io/results', success: function(data) {
+            response = $.parseJSON(data);
+            drawTable(response);
+            }
+        });
+    }
+    
+    function drawTable(data) {
+        for (var i = 0; i < data.length; i++) {
+            drawRow(data[i]);
+        }
+    }
+    
+    function drawRow(rowData) {
+        var row = $("<tr />")
+        $("#DataTable").append(row); //this will append tr element to table... keep its reference for a while since we will add cels into it
+        row.append($("<td># " + rowData.number + "</td>"));
+        row.append($("<td>" + rowData.project + "</td>"));
+    }
+  </script>
+</body>
+</html>
