@@ -8,7 +8,7 @@
   <br/>
   <div class="container">
       <div class="row">
-        <p>JSON govena'</p>
+        <p>JSON java govena'</p>
       </div>
   </div>
   <script src="../assets/js/jquery.min.js"></script>
@@ -17,8 +17,9 @@
   <script>
   $(document).ready(function () {
     drawData();
-    
-    function drawData() {
+  });
+  
+  function drawData() {
         $.ajax({
             url: 'http://mvazure.webscript.io/getBlobJSON?container=sweater', success: function(data) {
             response = $.parseJSON(data);
