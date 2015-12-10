@@ -8,7 +8,7 @@
   <br/>
   <div class="container">
       <div class="row">
-        <p>Howdy govena'</p>
+        <p>eeeeehh govena'</p>
       </div>
   </div>
   <script src="../assets/js/jquery.min.js"></script>
@@ -22,7 +22,7 @@
             url: containerUrl + '?restype=container&comp=list',
             dataType: 'xml',
             success: function(data) {
-                blobs = $.parseXML(xml);
+                blobs = $.parseXML(data);
                 listBlobs(blobs);
             }
         });
