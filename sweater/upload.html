@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puber</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/user.css">
+</head>
+
+
+  <body> 
+  <div class="container">
+    <h2>Upload your sweater</h2>
+    <div class="row">
+        <div class="col-md-12">
+          <h2>Upload UPU report</h2>
+          <form action="https://mvazure.webscript.io/upload?container=sweater" method="post" enctype="multipart/form-data">
+          <label for="file">Choose a file (10MB maximum):
+          </label>
+          <input type="file" name="file"/>
+          <button type="submit" class="btn btn-primary">Upload
+          </button>
+        </div>
+    </div>
+  </div>
+</form>
+    
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+ 
+  </body>
+</html>
