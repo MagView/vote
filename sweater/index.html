@@ -16,20 +16,15 @@
   
   <script>
   $(document).ready(function () {
-  var containerUrl = 'https://puber.blob.core.windows.net/sweater';
+    drawData();
+    
+    function drawData() {
         $.ajax({
-            type: 'GET',
-            url: containerUrl + '?restype=container&comp=list',
-            success: function(data) {
-                blobs = $.parseXML(data);
-                console.log(data.ToString());
-                listBlobs(blobs);
+            url: 'http://mvazure.webscript.io/getBlobJSON?container=sweater', success: function(data) {
+            response = $.parseJSON(data);
+            console.log(response);
             }
         });
-    });
-
-    function listBlobs(blobs) {
-        
     }
   </script>
 </body>
