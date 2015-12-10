@@ -16,14 +16,18 @@
   
   <script>
   $(document).ready(function () {
-    $.ajax({
-            url: 'http://mvshipit.webscript.io/results', success: function(data) {
-            response = $.parseJSON(data);
-            response = response.sort(function (a, b) { return a.number.localeCompare(b.number); });
-        }
+  var containerUrl = 'https://puber.blob.core.windows.net/sweater';
+        $.ajax({
+            type: 'GET',
+            url: containerUrl + '?restype=container&comp=list',
+            dataType: 'xml',
+            success: listBlobs
+        });
     });
-  });
-    
+
+    function listBlobs(xml) {
+        blobs = $.parseXML(xml);
+    }
   </script>
 </body>
 </html>
