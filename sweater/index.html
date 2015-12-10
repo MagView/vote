@@ -8,7 +8,7 @@
   <br/>
   <div class="container">
       <div class="row">
-        <p>Huh govena'</p>
+        <p>What govena'</p>
       </div>
   </div>
   <script src="../assets/js/jquery.min.js"></script>
@@ -23,13 +23,14 @@
             success: function(data) {
                 blobs = $.parseXML(data);
                 console.log(data);
+                console.log(blobs);
                 listBlobs(blobs);
             }
         });
     });
 
     function listBlobs(blobs) {
-        console.log(blobs);
+        
     }
   </script>
 </body>
