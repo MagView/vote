@@ -23,6 +23,7 @@
             dataType: 'xml',
             success: function(data) {
                 blobs = $.parseXML(data);
+                alert(data);
                 listBlobs(blobs);
             }
         });
